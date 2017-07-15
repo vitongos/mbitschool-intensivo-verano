@@ -13,7 +13,7 @@ sudo yum -y install git
 cd
 git clone https://github.com/vitongos/mbitschool-intensivo-verano.git nosql-src
 chmod +x nosql-src/deploy/*.sh
-cd nosql-src/
 sudo -i
-deploy/setup.sh
+cd /home/centos/nosql-src/deploy
+./setup.sh
 ```

@@ -6,5 +6,6 @@ yum-config-manager --enable docker-ce-edge
 yum-config-manager --enable docker-ce-testing
 yum-config-manager --disable docker-ce-edge
 yum makecache fast
-yum install docker-ce-stable
+yum install -y docker-ce.x86_64
 systemctl start docker
+usermod -a -G docker centos
