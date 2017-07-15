@@ -9,7 +9,6 @@ A continuación se especifica el proceso de instalación de los sistemas necesar
 ### Instalar el repositorio clonándolo de Github:
 Ejecutar el siguiente script en un terminal:
 ```bash
-sudo yum -y install git
 cd
 git clone https://github.com/vitongos/mbitschool-intensivo-verano.git nosql-src
 chmod +x nosql-src/deploy/*.sh
