@@ -9,3 +9,5 @@
 ./neo4j.sh
 
 ./cassandra.sh
+
+./python.sh
