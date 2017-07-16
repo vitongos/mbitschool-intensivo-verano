@@ -1,0 +1,4 @@
+name;description;variants;promotions;rates;stock;prices
+'Tacklife SDH13DC';'Taladro Atornillador Eléctrico, Velocidad Giratoria Ajustable';[('color','red'),('color','orange'),('power','700W'),('power','500W')];{('ES',40)};[5,3,1,2,1,2];{('ES','color','orange',20),('PT','color','orange',15)};{('ES','color','orange',25.99),('PT','color','orange',27.99)}
+'Einhell TH-HA 2000';'Decapador (potencia 1000- 2000 W)';[('color','orange'),('power','1000W'),('power','2000W')];{('ES',25)};[4,4,5,4,4];{('ES','color','orange',20),('PT','color','orange',15)};{('ES','color','orange',15.99),('PT','color','orange',20.95)}
+'Bosch EasyImpact 550';'Taladro Percutor';[('color','black'),('cable','2.5m'),('power','550W')];{('ES',30)};[5,5,5,5,5,5];{('ES','color','black',12),('PT','color','black',15)};{('ES','color','black',51.99),('PT','color','black',55)}
