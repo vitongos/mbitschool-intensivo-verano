@@ -10,4 +10,6 @@
 
 ./cassandra.sh
 
+./eclipse.sh
+
 ./python.sh
