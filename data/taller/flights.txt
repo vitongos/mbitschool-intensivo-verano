@@ -1,0 +1,14 @@
+USING PERIODIC COMMIT 200 LOAD CSV WITH HEADERS FROM 'file:///flights-04-2017.csv' AS ln MERGE (:Airport {code:ln.ORIGIN, city:ln.ORIGIN_CITY, state:ln.ORIGIN_ST})
+
+USING PERIODIC COMMIT 1000 LOAD CSV WITH HEADERS FROM 'file:///flights-04-2017.csv' AS ln MATCH (o:Airport {code:ln.ORIGIN}), (d:Airport {code:ln.DEST}) MERGE (o)-[r:FLIGHT {carrier:ln.CARRIER,distance:toFloat(ln.DISTANCE)}]->(d) ON CREATE SET r.c = 1, r.time = toFloat(coalesce(ln.AIR_TIME,0)) ON MATCH SET r.c = coalesce(r.c,0) + 1, r.time = coalesce(r.time,0) + toFloat(coalesce(ln.AIR_TIME,0));
+
+MATCH (o:Airport)-[r]-(d:Airport) RETURN d.code, d.city, SUM(r.c) AS c ORDER BY c DESC LIMIT 30
+
+MATCH (o:Airport)-[r]->(d:Airport {code:"LAX"}) WHERE r.carrier <> "AA" RETURN (30*24*60.0)/sum(r.c)
+
+MATCH (o:Airport) WHERE o.city = "Sacramento, CA" RETURN o.code
+
+MATCH (o:Airport) WHERE o.city = "Indianapolis, IN" RETURN o.code
+
+MATCH p = (o:Airport {code:"SMF"})-[r1]->()-[r2]->(d:Airport {code:"IND"}) RETURN p, r1.time/r1.c + r2.time/r2.c as t ORDER BY t LIMIT 3
+
