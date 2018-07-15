@@ -25,33 +25,33 @@ CREATE TYPE promotion (
 );
 
 ALTER TABLE products ADD (
-		valorations set< frozen< valoration > >,
-		promotions set< frozen< promotion > >
+    valorations set< frozen< valoration > >,
+    promotions set< frozen< promotion > >
 );
 
 ALTER TABLE products ADD (
-		prices set< frozen< tuple< text, set< frozen< tuple< int, decimal > > > > > >
+    prices set< frozen< tuple< text, set< frozen< tuple< int, decimal > > > > > >
 );
 
 CREATE TABLE catalog (
     name text,
     description text,
-		variants list< frozen < tuple <text, text > > >,
-		promotions set< frozen <tuple <text, int > > >,
-		rates list< int >,
-		stock set< frozen <tuple <text, text, text, int > > >,
-		prices set< frozen <tuple <text, text, text, decimal > > >,
+    variants list< frozen < tuple <text, text > > >,
+    promotions set< frozen <tuple <text, int > > >,
+    rates list< int >,
+    stock set< frozen <tuple <text, text, text, int > > >,
+    prices set< frozen <tuple <text, text, text, decimal > > >,
     PRIMARY KEY (name)
 );
 
 COPY catalog (
-		name, 
-		description, 
-		variants, 
-		promotions, 
-		rates, 
-		stock, 
-		prices
+  name, 
+  description, 
+  variants, 
+  promotions, 
+  rates, 
+  stock, 
+  prices
 ) 
 FROM '/nosql/data/cassandra/products.csv' 
 WITH DELIMITER = ';'
