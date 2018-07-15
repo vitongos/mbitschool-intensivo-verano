@@ -7,19 +7,18 @@ Setup MongoDB
 ### Restaurar la colección registerTiny
 Ejecutar en un terminal:
 ```bash
-cd /home/centos/data
-tar xvf registerTiny.json.gz
-mongoimport -d test -c registerTiny registerTiny.json
-rm registerTiny.json
+cd /home/centos/nosql-src/data/mongodb
+gunzip registerTiny.json.gz
+mongoimport -d mkt -c registerTiny registerTiny.json
 ```
 
 ### Restaurar la colección register
 Ejecutar en un terminal:
 ```bash
-cd /home/centos/data
-tar xvf register.json.gz
-mongorestore -d test -c registerTiny test/register.bson
-rm -rf test
+cd /home/centos/nosql-src/data/mongodb
+gunzip register.bson.gz
+gunzip register.metadata.json.gz
+mongorestore -d mkt -c register register.bson
 ```
 
 
