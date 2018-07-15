@@ -6,6 +6,7 @@ import java.util.Arrays;
 import org.bson.Document;
 
 import com.mongodb.*;
+import com.mongodb.MongoClient;
 import com.mongodb.client.*;
 
 public class Write 
