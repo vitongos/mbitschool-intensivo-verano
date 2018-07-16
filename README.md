@@ -11,7 +11,6 @@ Ejecutar el siguiente script en un terminal:
 ```bash
 cd
 git clone https://github.com/vitongos/mbitschool-intensivo-verano.git nosql-src
-chmod +x nosql-src/deploy/*.sh
 sudo -i
 cd /home/centos/nosql-src/deploy
 ./setup.sh
