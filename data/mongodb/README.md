@@ -21,4 +21,8 @@ gunzip register.metadata.json.gz
 mongorestore -d mkt -c register register.bson
 ```
 
+Soluciones a los problemas de MongoDB
+-------------------------------------
+ 
+ Las soluciones a los problemas pueden consultarse en el archivo **solutions.js**
 
