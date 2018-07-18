@@ -192,5 +192,28 @@ db.clients.mapReduce(
 
 // Obtener nombre y dirección del doctor con mayor saldo a favor
 
+db.clients.aggregate( [
+    { $project : {doctor: 1, pagos: 1, gastos: 1} },
+    { $group: { _id : { doctor: "$doctor.name", address: "$doctor.address" }, p: { $sum: "$pagos" }, g : { $sum: "$gastos" } } },
+    { $project : {_id: 0, name: "$_id.doctor", address: "$_id.address", saldo: { $subtract: ["$p", "$g"] } } },
+    { $sort : { saldo: 1 }},
+    { $limit: 1 }
+]);
+
 // Obtener la ciudad con mayor riesgo para una especialidad dada
 //     Riesgo = Valoración promedio / Saldo promedio
+
+db.clients.distinct("specialties.name");
+
+var especialidad = "Geriatría";
+
+db.clients.aggregate( [
+    { $unwind : "$specialties" },
+    { $match : { "specialties.name": especialidad } },
+    { $project: { city: 1, specialties: 1, saldo: { $subtract: [ "$pagos", "$gastos" ] } } },
+    { $group: { _id : { city: "$city" }, v: { $avg: "$specialties.valoracion" }, s: { $avg: "$saldo" } } },
+    { $project: { _id: 0, city: "$_id.city", riesgo: { $divide: [ "$v", "$s" ] } } },
+    { $sort: { riesgo: -1 } },
+    { $limit: 10 }
+]);
+
