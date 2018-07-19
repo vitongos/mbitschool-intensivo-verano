@@ -12,4 +12,6 @@
 
 ./eclipse.sh
 
+./r.sh
+
 ./python.sh
